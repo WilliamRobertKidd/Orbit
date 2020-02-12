@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Orbit.unity
+    guid: e5d32f94fed07684d9494c228f7f7f4b
+  - enabled: 0
+    path: Assets/Scenes - Copy/Orbit.unity
+    guid: 59362cbcb287c93459e78b9dc37f6a80
   m_configObjects: {}

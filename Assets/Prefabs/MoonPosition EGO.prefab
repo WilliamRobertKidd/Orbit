@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8028664892227601881}
   - component: {fileID: 8028664892227601880}
   - component: {fileID: 5646343619519702684}
+  - component: {fileID: 4347311199544916967}
   m_Layer: 8
   m_Name: MoonPosition EGO
   m_TagString: Celestial
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8028664892227601882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 8028664893946640796}
   m_Father: {fileID: 0}
@@ -46,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0.05
+  startingMoon: 0
+  avatar: 0
+  firstOrbiting: 0
 --- !u!114 &5646343619519702684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +64,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 8028664892988492391}
   orbit: {fileID: 8028664893946640797}
+--- !u!114 &4347311199544916967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028664892227601882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564d75467a207f84f82f7420624b5eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionSpeed: 6
+  scaleSpeed: 4
+  currentPosition: {x: 0, y: 0, z: 0}
+  endPosition:
+  - {x: 0, y: -0.1, z: 0}
+  - {x: 0, y: -0.25, z: 0}
+  - {x: 0, y: -0.3, z: 0}
+  - {x: 0, y: -0.5, z: 0}
+  - {x: 0, y: -0.3, z: 0}
+  - {x: 0, y: -0.25, z: 0}
+  - {x: 0, y: -0.1, z: 0}
+  - {x: 0, y: 0, z: 0}
+  currentScale: {x: 0, y: 0, z: 0}
+  endScale: {x: 1, y: 1, z: 1}
+  noLength: 0
 --- !u!1 &8028664892988492391
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +105,7 @@ GameObject:
   - component: {fileID: 8028664892988492388}
   - component: {fileID: 8028664892988492389}
   - component: {fileID: 8028664892988492393}
+  - component: {fileID: 7699447664575219197}
   m_Layer: 0
   m_Name: MoonModelPlaceholder
   m_TagString: Untagged
@@ -90,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 8028664892988492391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 8028664893946640796}
   m_RootOrder: 0
@@ -102,7 +134,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8028664892988492391}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4711208715938537054, guid: 3a0d533f945334b429dcfb8362b25a9f, type: 3}
 --- !u!23 &8028664892988492395
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -120,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a11b3ebf411b6354ab49c0a574555d6c, type: 2}
+  - {fileID: 2100000, guid: d52ab13f40e8f7947ab8159a4d9b758e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +181,7 @@ SphereCollider:
   m_GameObject: {fileID: 8028664892988492391}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -166,6 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1
+  startingMoon: 0
+  avatar: 0
+  firstOrbiting: 0
 --- !u!114 &8028664892988492393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,10 +214,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomColour:
-  - {r: 0, g: 1, b: 0.98136926, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0.0010039806, g: 1, b: 0, a: 0}
+  - {r: 0, g: 0.583333, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0.02631569, a: 0}
+  - {r: 0.8000001, g: 1, b: 0, a: 0}
+  - {r: 0, g: 1, b: 0.758389, a: 0}
+  - {r: 0.82574797, g: 0, b: 1, a: 0}
   orbitEgo: {fileID: 0}
+  cloudSphere: {fileID: 0}
+  planet: 0
+  startingPlanet: 0
+  terraPlanets:
+  - {fileID: 2100000, guid: d52ab13f40e8f7947ab8159a4d9b758e, type: 2}
+  - {fileID: 2100000, guid: 918abcb2b3863ea44b99746d5dbef9ae, type: 2}
+  - {fileID: 2100000, guid: 1c7b45d45c5f1204386e3f0a2463ce49, type: 2}
+  - {fileID: 2100000, guid: c8793a88b5f27a84a972df6bf513e976, type: 2}
+  - {fileID: 2100000, guid: f31db2380a306ac479bd3a9b99b900ab, type: 2}
+  - {fileID: 2100000, guid: 609e76760ffe5ed409a8f54e00d2cc26, type: 2}
+  clouds: []
+--- !u!114 &7699447664575219197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028664892988492391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4165ff9b522614aab6ed72655a9cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotations:
+  - {x: 0, y: 0, z: 10}
+  - {x: 0, y: 0, z: 20}
+  - {x: 0, y: 0, z: 30}
+  - {x: 0, y: 0, z: 0}
+  objects: []
+  twoObjects: 0
 --- !u!1 &8028664893946640797
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8028664893946640796}
   - component: {fileID: 8638670347930220013}
+  - component: {fileID: 2230667016337081910}
   m_Layer: 0
   m_Name: MoonOrbit EGO
   m_TagString: Orbit
@@ -233,12 +301,33 @@ MonoBehaviour:
   randomPositionNumber: 0
   planetPositions: []
   moonPositions:
-  - 0.9
-  - 1
+  - 1.1
   - 1.2
+  - 1.35
   - 1.35
   - 1.5
   - 1.61
+--- !u!114 &2230667016337081910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028664893946640797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4165ff9b522614aab6ed72655a9cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotations:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 10}
+  - {x: 0, y: 0, z: 20}
+  - {x: 0, y: 0, z: 30}
+  objects:
+  - {fileID: 8028664892988492391}
+  - {fileID: 0}
+  twoObjects: 0
 --- !u!1001 &1782462243941156775
 PrefabInstance:
   m_ObjectHideFlags: 0

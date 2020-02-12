@@ -9,6 +9,13 @@ TagManager:
   - Vacuum
   - Celestial
   - Orbit
+  - EarthRing
+  - EarthModel
+  - Ring
+  - EndingOrb
+  - OrbExit
+  - OrbAnchor
+  - OrbSpawnAnchor
   layers:
   - Default
   - TransparentFX
@@ -21,8 +28,8 @@ TagManager:
   - Moons
   - Planets
   - Sun
-  - 
-  - 
+  - PostProcessing
+  - Orbs
   - 
   - 
   - 

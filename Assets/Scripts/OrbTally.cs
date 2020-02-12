@@ -12,10 +12,33 @@ public class OrbTally : MonoBehaviour
     public int method;
     public int celestial;
 
+    public float timer;
+    public float spawnSpeed;
+    public bool ending;
+    public bool empty;
+    public bool locked;
+
+    public Transform orbSpawn;
+    public Transform primaryHand;
+    public Transform anchor;
+
+    public bool endingLock;
+    public GameObject endingOrb;
+
     public GameObject[] celestials;
 
     public GameObject planetPrefab;
     public GameObject moonPrefab;
+
+    public GameObject sceneEndObject;
+    public GameObject orbPositioner;
+
+    public bool ring1;
+    public bool ring2;
+    public bool ring3;
+    public bool ring4;
+
+    public int orbTotal;
 
 
     Color colorStart;
@@ -39,6 +62,103 @@ public class OrbTally : MonoBehaviour
             tally = 0;
 
             amendment();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            newPlanet();
+        }
+
+        if (ending)
+        {
+            timer += Time.deltaTime;
+
+            if (!endingLock)
+            {
+                orbPositioner.GetComponent<OrbPositioner>().orbsCollecting = true;
+                endingLock = true;
+            }
+
+            if (empty == true && locked == true)
+            {
+                sceneEndObject.GetComponent<SceneEnd>().fadeToBlack();
+                locked = false;
+            }
+
+            if (spawnSpeed < timer && empty == false)
+            {
+
+                if (totalTally >= 16 && empty == false && locked == false)
+                {
+                    locked = true;
+                }
+                else if (totalTally < 16 && empty == false && locked == false)
+                {
+                    empty = true;
+                    locked = true;
+                }
+                else if (totalTally >= 1 && orbTotal <= 16)
+                {
+                    if (orbTotal == 16)
+                    {
+                        orbTotal = 0;
+
+                        if (ring1 == false)
+                            ring1 = true;
+                        else if (ring2 == false)
+                            ring2 = true;
+                        else if (ring3 == false)
+                            ring3 = true;
+                        else if (ring4 == false)
+                            ring4 = true;
+                    }
+
+                    if (ring1 == false)
+                    {
+                        orbSpawn.GetComponent<ExitOrbSpawn>().spawn();
+                        orbTotal += 1;
+                    }
+                    else if (ring2 == false)
+                    {
+                        orbSpawn.GetComponent<ExitOrbSpawn>().spawn();
+                        orbTotal += 1;
+                    }
+                    else if (ring3 == false)
+                    {
+                        orbSpawn.GetComponent<ExitOrbSpawn>().spawn();
+                        orbTotal += 1;
+                    }
+                    else if (ring4 == false)
+                    {
+                        orbSpawn.GetComponent<ExitOrbSpawn>().spawn();
+                        orbTotal += 1;
+                    }
+                    else if (ring4 == true)
+                    {
+                        orbPositioner.GetComponent<OrbPositioner>().orbsCollecting = false;
+                    }
+                    else
+                    {
+                        orbPositioner.GetComponent<OrbPositioner>().orbsCollecting = false;
+
+                        Debug.Log("OrbsCollectingFALSE");
+                    }
+
+                    totalTally -= 1;
+                }
+                //else if (tally > 0)
+                //{
+                //    tally -= 2;
+                //}
+                else
+                {
+                    orbPositioner.GetComponent<OrbPositioner>().orbsCollecting = false;
+
+                    Debug.Log("OrbsCollectingFALSE");
+                }   
+
+                timer = 0;
+            }
         }
     }
 
@@ -74,13 +194,21 @@ public class OrbTally : MonoBehaviour
     {
         celestial = Random.Range(0, celestials.Length);
 
-        if (celestials[celestial].layer == 10)
+        if (celestials[celestial].layer == 10 && celestials[celestial].GetComponent<OrbitLimit>().orbitingObjectsLength < 4)
         {
-            Debug.Log("NEWPLANET");
+            Debug.Log("NEW PLANET");
 
             Instantiate(planetPrefab, celestials[celestial].GetComponent<ModelReference>().orbit.transform.position,
                     celestials[celestial].GetComponent<ModelReference>().orbit.transform.rotation, 
                     celestials[celestial].GetComponent<ModelReference>().orbit.transform);
+
+            celestials[celestial].GetComponent<OrbitLimit>().newOrbitingObject();
+        }
+        else if (celestials[celestial].layer == 10 && celestials[celestial].GetComponent<OrbitLimit>().orbitingObjectsLength == 4)
+        {
+            Debug.Log("CAN'T CREATE NEW PLANET, RECALCULATING");
+
+            amendment();
         }
         else
             newPlanet();
@@ -90,17 +218,28 @@ public class OrbTally : MonoBehaviour
     {
         celestial = Random.Range(0, celestials.Length);
 
-        if (celestials[celestial].layer == 9)
+        if (celestials[celestial].layer == 9 && celestials[celestial].GetComponent<OrbitLimit>().orbitingObjectsLength < 2)
         {
             Debug.Log("NEWMOON");
 
             Instantiate(moonPrefab, celestials[celestial].GetComponent<ModelReference>().orbit.transform.position,
                     celestials[celestial].GetComponent<ModelReference>().orbit.transform.rotation, 
                     celestials[celestial].GetComponent<ModelReference>().orbit.transform);
+
+            celestials[celestial].GetComponent<OrbitLimit>().newOrbitingObject();
+        }
+        else if (celestials[celestial].layer == 9 && celestials[celestial].GetComponent<OrbitLimit>().orbitingObjectsLength == 2)
+        {
+            Debug.Log("CAN'T CREATE NEW MOON, RECALCULATING");
+
+            amendment();
         }
         else
             newMoon();
     }
 
-
+    public void endingSequence()
+    {
+        ending = true;
+    }
 }

@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6417479299141099388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8028664892227601882, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_Name
+      value: MoonPosition EGO Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601881, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892227601880, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: startingMoon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028664892988492394, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4711208715938537054, guid: 3a0d533f945334b429dcfb8362b25a9f,
+        type: 3}
+    - target: {fileID: 8028664892988492393, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: startingPlanet
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638670347930220013, guid: 38a0f7cdb47d4324d9deb5322a6601f7,
+        type: 3}
+      propertyPath: moonPositions.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7962287794045008784, guid: 38a0f7cdb47d4324d9deb5322a6601f7, type: 3}
+    - {fileID: 871589923611560287, guid: 38a0f7cdb47d4324d9deb5322a6601f7, type: 3}
+    - {fileID: 4347311199544916967, guid: 38a0f7cdb47d4324d9deb5322a6601f7, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 38a0f7cdb47d4324d9deb5322a6601f7, type: 3}
